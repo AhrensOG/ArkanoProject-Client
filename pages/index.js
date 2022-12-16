@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useState } from 'react'
+import LandingPage from '../components/LandingPage/LandingPage'
 import NavBar from '../components/Navbar/NavBar'
 import SideBar from '../components/Navbar/SideBar'
 
@@ -16,6 +17,7 @@ export default function Home() {
       <div>
         <NavBar nav={nav} setNav={setNav}/>
         <SideBar nav={nav} setNav={setNav}/>
+        <LandingPage/>
       </div>
     </>
   )
