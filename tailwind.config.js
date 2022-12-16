@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // roboto: ['var(--font-roboto)', ...fontFamily.sans],
+        roboto: ['var(--font-roboto)', ...fontFamily.sans],
         custom: "'Lora', serif"
       }
     },
