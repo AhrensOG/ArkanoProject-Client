@@ -1,10 +1,10 @@
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
-const InitialButton = ({ flag }) => {
+const InitialButtons = ({ flag }) => {
   return (
     <div className="">
-      <button className=" text-white sm:w-96 w-96">
+      <button className=" text-white w-full">
         <div className="bg-black flex justify-center h-12 pt-3 hover:bg-slate-600 ">
           {flag ? (
             <div className="pr-1 ">INICIAR</div>
@@ -25,4 +25,4 @@ const InitialButton = ({ flag }) => {
   );
 };
 
-export default InitialButton;
+export default InitialButtons;
