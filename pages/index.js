@@ -1,6 +1,10 @@
 import Head from 'next/head'
+import { useState } from 'react'
+import NavBar from '../components/Navbar/NavBar'
+import SideBar from '../components/Navbar/SideBar'
 
 export default function Home() {
+  const [nav, setNav] = useState(false)
   return (
     <>
       <Head>
@@ -10,7 +14,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <h1 className='text-2xl text-blue-500 font-roboto'>PRUEBA</h1>
+        <NavBar nav={nav} setNav={setNav}/>
+        <SideBar nav={nav} setNav={setNav}/>
       </div>
     </>
   )
