@@ -1,7 +1,7 @@
 import Head from 'next/head';
 // import ControlBar from '../components/controlBar/ControlBar.jsx';
 import AddButton from '../components/cardButtons/AddButton.jsx';
-// import ReverseButton from '../components/cardButtons/ReverseButton.jsx';
+import ReverseButton from '../components/cardButtons/ReverseButton.jsx';
 
 export default function Home() {
   return (
