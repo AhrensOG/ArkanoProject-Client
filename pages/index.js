@@ -1,4 +1,7 @@
-import Head from 'next/head'
+import Head from 'next/head';
+// import ControlBar from '../components/controlBar/ControlBar.jsx';
+import AddButton from '../components/cardButtons/AddButton.jsx';
+// import ReverseButton from '../components/cardButtons/ReverseButton.jsx';
 
 export default function Home() {
   return (
@@ -10,8 +13,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <h1 className='text-2xl text-blue-500 font-roboto'>PRUEBA</h1>
+        <ControlBar/>
+        <AddButton/>
+        <ReverseButton/>
       </div>
     </>
-  )
-}
+  );
+};
