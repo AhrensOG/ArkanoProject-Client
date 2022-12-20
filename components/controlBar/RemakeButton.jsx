@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RemakeButton = (handleRemake) => {
+const RemakeButton = ({handleRemake}) => {
   const path = "/remake.svg";
   
   return (

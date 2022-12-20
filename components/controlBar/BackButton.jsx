@@ -1,6 +1,6 @@
 import React from 'react'
 
-const BackButton = (handleBack) => {
+const BackButton = ({handleBack}) => {
   const path = "/back.svg";
   
   return (

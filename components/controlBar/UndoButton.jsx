@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UndoButton = (handleUndo) => {
+const UndoButton = ({handleUndo}) => {
   const path = "/undo.svg";
   
   return (
