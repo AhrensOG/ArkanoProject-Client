@@ -1,7 +1,11 @@
-import Head from 'next/head'
-import { useState } from 'react'
-import NavBar from '../components/Navbar/NavBar'
-import SideBar from '../components/Navbar/SideBar'
+import Head from 'next/head';
+import { useState } from 'react';
+import NavBar from '../components/Navbar/NavBar';
+import SideBar from '../components/Navbar/SideBar';
+import ControlBar from '../components/controlBar/ControlBar.jsx';
+import AddButton from '../components/cardButtons/AddButton.jsx';
+import ReverseButton from '../components/cardButtons/ReverseButton.jsx';
+
 
 export default function Home() {
   const [nav, setNav] = useState(false)
@@ -16,7 +20,10 @@ export default function Home() {
       <div>
         <NavBar nav={nav} setNav={setNav}/>
         <SideBar nav={nav} setNav={setNav}/>
+        <ControlBar/>
+        <AddButton/>
+        <ReverseButton/>
       </div>
     </>
-  )
-}
+  );
+};
