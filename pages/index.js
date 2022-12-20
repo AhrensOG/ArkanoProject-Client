@@ -1,14 +1,8 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import InitialButtons from '../components/buttons/InitialsButtons';
 import LandingPage from '../components/LandingPage/LandingPage'
-import NavBar from '../components/Navbar/NavBar'
-import SideBar from '../components/Navbar/SideBar'
-import ControlBar from '../components/controlBar/ControlBar.jsx';
-import AddButton from '../components/cardButtons/AddButton.jsx';
-import ReverseButton from '../components/cardButtons/ReverseButton.jsx';
 
 export default function Home() {
-  const [nav, setNav] = useState(false)
   return (
     <>
       <Head>
@@ -18,10 +12,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <NavBar nav={nav} setNav={setNav}/>
-        <SideBar nav={nav} setNav={setNav}/>
-        <ControlBar/>
         <LandingPage/>
+        <InitialButtons initial={true}/>
       </div>
     </>
   );
