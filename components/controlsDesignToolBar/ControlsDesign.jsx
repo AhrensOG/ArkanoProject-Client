@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ColorSelect from '../components/ColorSelect'
-import SlideUp from "./transitions/SlideUp";
+import ColorSelect from './ColorSelect'
+import SlideUp from "../transitions/SlideUp";
 
 const ControlsDesign = () => {
   const [colorTool, setColorTool] = useState(false)

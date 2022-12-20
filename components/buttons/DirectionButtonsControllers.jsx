@@ -1,6 +1,6 @@
 import React from "react";
 
-const DirectionButtonsControllers = ({ flag }) => {
+const DirectionButtonsControllers = ({ goHome }) => {
   return (
     <div className="flex justify-center w-full">
       <div className=" h-12 basis-1/2 text-white w-full">
@@ -9,7 +9,7 @@ const DirectionButtonsControllers = ({ flag }) => {
         </button>
       </div>
       <div className=" h-12 basis-1/2 text-white">
-        {flag ? (
+        {goHome ? (
           <button className="w-full h-full bg-black hover:bg-slate-600 ">
             IR AL INICIO
           </button>
