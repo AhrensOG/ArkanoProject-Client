@@ -12,12 +12,9 @@ const roboto = Roboto({
 })
 
 export default function App({ Component, pageProps }) {
-  const [nav, setNav] = useState(false)
 
   return (
-    <main className={`${roboto.variable} font-roboto`}>
-      <NavBar nav={nav} setNav={setNav}/>
-      <SideBar nav={nav} setNav={setNav}/>
+    <main className={`${roboto.variable} font-roboto h-full`}>
       <Component {...pageProps} />
     </main>
   )

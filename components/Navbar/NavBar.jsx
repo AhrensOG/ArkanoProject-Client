@@ -11,7 +11,7 @@ const NavBar = ({nav, setNav}) => {
       <Navbar fluid={true} rounded={false} className="bg-black">
         <div onClick={handleNav}>
           {/* MENU */}
-          <svg className="w-8 h-8" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+          <svg className="w-8 h-8 cursor-pointer" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
         </div>
         <div>
           <p className="font-roboto text-white font-semibold text-xl">
