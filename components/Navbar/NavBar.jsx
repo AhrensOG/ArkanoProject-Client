@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar } from "flowbite-react";
 
-const NavBar = ({nav, setNav}) => {
+const NavBar = ({nav, setNav, title = 'BIENVENIDO'}) => {
 
   const handleNav = () => {
     setNav(!nav)
@@ -15,7 +15,7 @@ const NavBar = ({nav, setNav}) => {
         </div>
         <div>
           <p className="font-roboto text-white font-semibold text-xl">
-            BIENVENIDO
+            {title}
           </p>
         </div>
         <div>
