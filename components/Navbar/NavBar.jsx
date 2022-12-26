@@ -23,27 +23,27 @@ const NavBar = ({nav, setNav, state}) => {
         : 
         state === "select"?
         <div>
-          <p className="font-roboto text-white font-semibold text-xl">
+          <p className="font-roboto text-white font-semibold text-sm">
             SELECCIONA UN TIPO DE PRENDA
           </p>
         </div>
         :
           state === "cut" ? 
         <div>
-          <p className="font-roboto text-white font-semibold text-xl">
+          <p className="font-roboto text-white font-semibold text-sm">
             SELECCIONA UN TIPO DE CORTE
           </p>
         </div>
         :
           state === "creation" ? 
         <div>
-          <p className="font-roboto text-white font-semibold text-xl">
+          <p className="font-roboto text-white font-semibold text-base">
             CREADOR DE DISEÑO 
           </p>
         </div>
         :  
         <div>
-          <p className="font-roboto text-white font-semibold text-xl">
+          <p className="font-roboto text-white font-semibold text-base">
             ¡MUCHAS GRACIAS!
           </p>
         </div>
