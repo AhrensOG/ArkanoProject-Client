@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import EndingPage from '../components/EndingPage/EndingPAge';
+import EndingPage from '../components/EndingPage/EndingPage';
 import NavBar from '../components/Navbar/NavBar';
 import { useState } from 'react';
 
