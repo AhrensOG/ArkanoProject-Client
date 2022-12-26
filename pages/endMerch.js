@@ -1,12 +1,12 @@
-
-import { useState } from 'react';
 import Head from 'next/head'
-import LandingPage from '../components/LandingPage/LandingPage';
+import EndingPage from '../components/EndingPage/EndingPAge';
 import NavBar from '../components/Navbar/NavBar';
-import DirectionButtonsControllers from '../components/buttons/DirectionButtonsControllers';
+import { useState } from 'react';
 
-export default function Ending() {
+export default function EndMerch() {
+
     const [nav, setNav] = useState(false)
+
 return (
     <>
         <Head>
@@ -16,10 +16,10 @@ return (
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <div>
-            <NavBar nav={nav} setNav={setNav} state={"cut"} />
-            <LandingPage/>
-            <DirectionButtonsControllers/>
-            SELECCIONA UN CORTE SIUUUU
+            <NavBar nav={nav} setNav={setNav} />
+            <SideBar nav={nav} setNav={setNav}/>
+
+            <EndingPage/>
         </div>
     </>
     );

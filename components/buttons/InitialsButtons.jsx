@@ -5,10 +5,10 @@ const InitialButtons = ({ initial }) => {
   const router = useRouter()
 
   const init = () => {
-    router.push("/tipo-de-prenda")
+    router.push("/typeOfClothes")
   }
   const next = () => {
-    router.push("/corte")
+    router.push("/cut")
   }
 
   return (

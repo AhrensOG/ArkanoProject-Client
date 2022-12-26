@@ -17,7 +17,7 @@ const NavBar = ({nav, setNav, state}) => {
         state === "welcome"?
         <div>
           <p className="font-roboto text-white font-semibold text-xl">
-            {title}
+            ¡BIENVENIDO!
           </p>
         </div>
         : 

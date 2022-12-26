@@ -3,9 +3,10 @@ import { useState } from 'react';
 import Head from 'next/head'
 import LandingPage from '../components/LandingPage/LandingPage';
 import NavBar from '../components/Navbar/NavBar';
-import InitialButtons from "../components/buttons/InitialsButtons"
+import DirectionButtonsControllers from '../components/buttons/DirectionButtonsControllers';
+import SideBar from '../components/Navbar/SideBar';
 
-export default function Ending() {
+export default function Corte() {
     const [nav, setNav] = useState(false)
 return (
     <>
@@ -16,10 +17,11 @@ return (
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <div>
-            <NavBar nav={nav} setNav={setNav} state={"select"} />
+            <NavBar nav={nav} setNav={setNav} state={"cut"} />
+            <SideBar nav={nav} setNav={setNav}/>
             <LandingPage/>
-            <InitialButtons/>
-            Akui va la prenduski kpe3333
+            <DirectionButtonsControllers/>
+            SELECCIONA UN CORTE SIUUUU
         </div>
     </>
     );
