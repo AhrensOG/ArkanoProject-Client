@@ -1,23 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar } from "flowbite-react";
 
 const NavBar = ({nav, setNav, state}) => {
+
 
   const handleNav = () => {
     setNav(!nav)
   }
   return (
     <div>
-      <Navbar fluid={true} rounded={false} className="bg-black/90">
+      <Navbar fluid={true} rounded={false} className="bg-black">
         <div onClick={handleNav}>
           {/* MENU */}
-          <svg className="w-8 h-8 cursor-pointer" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" ></path></svg>
+          <svg className="w-8 h-8 cursor-pointer" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
         </div>
         {
         state === "welcome"?
         <div>
           <p className="font-roboto text-white font-semibold text-xl">
-            BIENVENIDO
+            {title}
           </p>
         </div>
         : 

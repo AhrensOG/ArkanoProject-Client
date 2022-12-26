@@ -12,6 +12,7 @@ const roboto = Roboto({
 })
 
 export default function App({ Component, pageProps }) {
+
   return (
     <main className={`${roboto.variable} font-roboto`}>
       {/* <NavBar nav={nav} setNav={setNav} state={"welcome"}/> */}
