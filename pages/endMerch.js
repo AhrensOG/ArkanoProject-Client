@@ -18,8 +18,7 @@ return (
         </Head>
         <div>
             <NavBar nav={nav} setNav={setNav} />
-            <SideBarar nav={nav} setNav={setNav}/>
-
+            <SideBar nav={nav} setNav={setNav}/>
             <EndingPage/>
         </div>
     </>
