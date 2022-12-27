@@ -1,13 +1,14 @@
+import { Carousel } from 'flowbite-react';
 import Head from 'next/head'
-import Link from 'next/link';
 import { useState } from 'react';
-import InitialButtons from '../components/buttons/InitialsButtons';
-import LandingPage from '../components/LandingPage/LandingPage'
+import DirectionButtonsControllers from '../components/buttons/DirectionButtonsControllers';
 import NavBar from '../components/Navbar/NavBar';
 import SideBar from '../components/Navbar/SideBar';
+import Card from '../components/typeCloth/Card';
 
-export default function Home() {
+const TypeCloth = () => {
   const [nav, setNav] = useState(false)
+
   return (
     <>
       <Head>
@@ -18,18 +19,22 @@ export default function Home() {
       </Head>
       <div className='flex flex-col h-full'>
         <div className='basis-[5%]'>
-          <NavBar nav={nav} setNav={setNav}/>
+          <NavBar nav={nav} setNav={setNav} title={'MUCHAS GRACIAS'}/>
           <SideBar nav={nav} setNav={setNav}/>
         </div>
         <div className='basis-[90%]'>
-          <LandingPage/>
+          <Carousel slide={false}>
+            <Card/>
+            <Card/>
+            <Card/>
+          </Carousel>
         </div>
         <div className='basis-[5%]'>
-          <Link href='/typeCloth'>
-            <InitialButtons initial={true}/>
-          </Link>
+          <DirectionButtonsControllers redirectFirstButton=''/>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
+
+export default TypeCloth
