@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ColorSelect from './ColorSelect'
 import SlideUp from "../transitions/SlideUp";
+import ColorShirt from "../PartClothes/ColorShirt";
 
 const ControlsDesign = () => {
   const [colorTool, setColorTool] = useState(false)
@@ -29,7 +30,10 @@ const ControlsDesign = () => {
       <div>
         {
           colorTool 
-          ? <SlideUp><ColorSelect/></SlideUp>
+          ? <SlideUp>
+            <ColorShirt/>
+            <ColorSelect/>
+          </SlideUp>
           : <div></div>
         }
       </div>
