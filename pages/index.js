@@ -16,19 +16,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className='flex flex-col h-full'>
-        <div className='basis-[5%]'>
-          <NavBar nav={nav} setNav={setNav}/>
-          <SideBar nav={nav} setNav={setNav}/>
-        </div>
-        <div className='basis-[90%]'>
-          <LandingPage/>
-        </div>
-        <div className='basis-[5%]'>
-          <Link href='/typeCloth'>
-            <InitialButtons initial={true}/>
-          </Link>
-        </div>
+      <div>
+      <NavBar nav={nav} setNav={setNav} state={"welcome"}/>
+        <LandingPage/>
+        <InitialButtons initial={true}/>
       </div>
     </>
   );
