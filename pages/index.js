@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link';
 import { useState } from 'react';
 import InitialButtons from '../components/buttons/InitialsButtons';
 import LandingPage from '../components/LandingPage/LandingPage'
@@ -19,6 +20,7 @@ export default function Home() {
       <NavBar nav={nav} setNav={setNav} state={"welcome"}/>
         <LandingPage/>
         <InitialButtons initial={true}/>
+
       </div>
     </>
   );
