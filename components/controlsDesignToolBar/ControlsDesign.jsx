@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import ColorSelect from './ColorSelect'
+import ColorSelect from './colorBar/ColorSelect';
+import FontSelect from './fontBar/FontSelect';
+import ImageSelect from './imageBar/ImageSelect';
 import SlideUp from "../transitions/SlideUp";
+
 
 const ControlsDesign = () => {
   const [colorTool, setColorTool] = useState(false)
@@ -24,13 +27,18 @@ const ControlsDesign = () => {
       setLogoTool(true)
     }
   };
+
   return (
     <div>
       <div>
         {
           colorTool 
           ? <SlideUp><ColorSelect/></SlideUp>
-          : <div></div>
+          : textTool 
+            ? <SlideUp><FontSelect/></SlideUp>
+            : logoTool 
+              ? <SlideUp><ImageSelect/></SlideUp>
+              : <div></div>
         }
       </div>
       <div className="flex justify-center  w-full">
