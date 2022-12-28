@@ -9,10 +9,11 @@ const DirectionButtonsControllers = ({ goHome }) => {
   }
   const next = () => {
     const data = router.asPath 
-    data === "/cut"?
-    router.push("/modification")
-    :
-    router.push("/endMerch")
+    data === "/typeOfClothes"
+    ? router.push('/cut')
+    : data === "/cut"
+    ? router.push("/modification")
+    : router.push("/endMerch")
   }
 
   const back = () => {
