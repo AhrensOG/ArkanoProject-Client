@@ -15,13 +15,13 @@ const ColorSelect = () => {
   ];
 
   return (
-    <div className="flex bg-[#313131] w-full h-8 justify-between">
+    <div className="flex bg-[#313131] w-full gap-1 py-2 justify-around">
       {colors.map((e) => {
         return (
-          <div key={e} className=" pt-1 px-1">
+          <div key={e} className="">
             <div
               style={{ backgroundColor: e }}
-              className="rounded-full w-6 h-6"
+              className="rounded-full p-3"
             >
               {" "}
             </div>

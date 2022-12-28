@@ -3,6 +3,7 @@ import ColorSelect from './colorBar/ColorSelect';
 import FontSelect from './fontBar/FontSelect';
 import ImageSelect from './imageBar/ImageSelect';
 import SlideUp from "../transitions/SlideUp";
+import ColorShirt from "../PartClothes/ColorShirt";
 
 
 const ControlsDesign = () => {
@@ -33,7 +34,10 @@ const ControlsDesign = () => {
       <div>
         {
           colorTool 
-          ? <SlideUp><ColorSelect/></SlideUp>
+          ? <SlideUp>
+            <ColorShirt/>
+            <ColorSelect/>
+          </SlideUp>
           : textTool 
             ? <SlideUp><FontSelect/></SlideUp>
             : logoTool 
