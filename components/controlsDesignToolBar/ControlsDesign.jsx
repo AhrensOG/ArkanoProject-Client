@@ -1,32 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ColorSelect from './colorBar/ColorSelect';
 import FontSelect from './fontBar/FontSelect';
 import ImageSelect from './imageBar/ImageSelect';
 import SlideUp from "../transitions/SlideUp";
-import ColorShirt from "../PartClothes/ColorShirt";
 
 
 const ControlsDesign = () => {
-  const [colorTool, setColorTool] = useState(false)
-  const [textTool, setTextTool] = useState(false)
-  const [logoTool, setLogoTool] = useState(false)
+  const [colorTool, setColorTool] = useState(false);
+  const [textTool, setTextTool] = useState(false);
+  const [logoTool, setLogoTool] = useState(false);
+
+  useEffect(() => {
+    setColorTool(true);
+  }, []);
 
   const handleSelectColor = (e) => {
     if (e.target.value === 'color') {
-      setColorTool(true)
-      setTextTool(false)
-      setLogoTool(false)
-    }
+      setColorTool(true);
+      setTextTool(false);
+      setLogoTool(false);
+    };
     if (e.target.value === 'text') {
-      setColorTool(false)
-      setTextTool(true)
-      setLogoTool(false)
-    }
+      setColorTool(false);
+      setTextTool(true);
+      setLogoTool(false);
+    };
     if (e.target.value === 'logo') {
-      setColorTool(false)
-      setTextTool(false)
-      setLogoTool(true)
-    }
+      setColorTool(false);
+      setTextTool(false);
+      setLogoTool(true);
+    };
   };
 
   return (
@@ -35,7 +38,6 @@ const ControlsDesign = () => {
         {
           colorTool 
           ? <SlideUp>
-            <ColorShirt/>
             <ColorSelect/>
           </SlideUp>
           : textTool 
