@@ -4,7 +4,8 @@ import NavBar from "../components/Navbar/NavBar";
 import DirectionButtonsControllers from "../components/buttons/DirectionButtonsControllers";
 import SideBar from "../components/Navbar/SideBar";
 import { Carousel } from "flowbite-react";
-import TShirtMdCard from "../components/typeCloth/cards/TShirtMdCard";
+import TShirtCard from "../components/typeCloth/cards/TShirtCard";
+
 
 export default function Corte() {
   const [nav, setNav] = useState(false);
@@ -23,9 +24,9 @@ export default function Corte() {
         </div>
         <div className="basis-[90%]">
           <Carousel slide={false}>
-            <TShirtMdCard />
-            <TShirtMdCard />
-            <TShirtMdCard />
+            <TShirtCard id="REMERA 1" width={250} />
+            <TShirtCard id="REMERA 2" width={250} />
+            <TShirtCard id="REMERA 3" width={250} />
           </Carousel>
         </div>
         <div className="basis-[5%]">
