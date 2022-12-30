@@ -2,10 +2,11 @@ import { useState } from "react";
 import Head from "next/head";
 import NavBar from "../components/Navbar/NavBar";
 import SideBar from "../components/Navbar/SideBar";
-import TShirtSmCard from "../components/typeCloth/cards/TShirtSmCard";
+import TShirtCard from "../components/typeCloth/cards/TShirtCard";
 import ControlsDesign from "../components/controlsDesignToolBar/ControlsDesign";
 import ControlBar from '../components/controlBar/ControlBar'
 import { useRouter } from "next/router";
+
 
 export default function Modification() {
   const [nav, setNav] = useState(false);
@@ -36,7 +37,7 @@ export default function Modification() {
           <ControlBar handleBack={handleBack} handleSave={handleSave}/>
         </div>
         <div className="basis-[90%]">
-          <TShirtSmCard />
+          <TShirtCard id="REMERA 1" width={250} />
         </div>
         <div className="basis-[5%]">
           <ControlsDesign/>

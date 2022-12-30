@@ -1,9 +1,12 @@
-import * as React from "react"
-const FrontTShirt = ({chestColor, leftArmColor, rightArmColor, neckColor}) => {
+import React from "react";
+
+
+const TShirt = ({id, width, chestColor, leftArmColor, rightArmColor, neckColor}) => {
   return (
     <svg
-      width={438}
-      height={558}
+      id={id}
+      width={width}
+      viewBox="0 0 438 558"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -481,6 +484,7 @@ const FrontTShirt = ({chestColor, leftArmColor, rightArmColor, neckColor}) => {
         />
       </defs>
     </svg>
-  )
-}
-export default FrontTShirt
+  );
+};
+
+export default TShirt;

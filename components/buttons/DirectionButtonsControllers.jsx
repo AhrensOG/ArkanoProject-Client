@@ -1,24 +1,29 @@
 import React from "react";
 import { useRouter } from "next/router";
-const DirectionButtonsControllers = ({ goHome }) => {
 
+
+const DirectionButtonsControllers = ({ goHome, callback }) => {
   const router = useRouter()
 
   const init = () => {
-    router.push("/")
-  }
+    router.push("/");
+  };
+
   const next = () => {
-    const data = router.asPath 
+    callback && callback();
+
+    const data = router.asPath;
+
     data === "/typeOfClothes"
     ? router.push('/cut')
     : data === "/cut"
     ? router.push("/modification")
-    : router.push("/endMerch")
-  }
+    : router.push("/endMerch");
+  };
 
   const back = () => {
-    router.back()
-  }
+    router.back();
+  };
 
   return (
     <div className="flex justify-center w-full">
