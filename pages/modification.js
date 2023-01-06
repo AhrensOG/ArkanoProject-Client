@@ -1,24 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import NavBar from "../components/Navbar/NavBar";
 import SideBar from "../components/Navbar/SideBar";
 import TShirtCard from "../components/typeCloth/cards/TShirtCard";
 import ControlsDesign from "../components/controlsDesignToolBar/ControlsDesign";
-import ControlBar from '../components/controlBar/ControlBar'
-import { useRouter } from "next/router";
+import ControlBar from '../components/controlBar/ControlBar';
+import { useSelector } from '../context/hooks';
 
 
 export default function Modification() {
   const [nav, setNav] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
+
+  const clothes = useSelector(state => state.clothes);
 
   const handleBack = () => {
-    router.back()
-  }
+    router.back();
+  };
 
   const handleSave = () => {
-    router.push('/endMerch')
-  }
+    router.push('/endMerch');
+  };
 
   return (
     <>
@@ -37,7 +40,7 @@ export default function Modification() {
           <ControlBar handleBack={handleBack} handleSave={handleSave}/>
         </div>
         <div className="basis-[90%]">
-          <TShirtCard id="REMERA 1" width={250} />
+          <TShirtCard id={clothes.class} width={250} clothes={clothes} />
         </div>
         <div className="basis-[5%]">
           <ControlsDesign/>
@@ -45,4 +48,4 @@ export default function Modification() {
       </div>
     </>
   );
-}
+};

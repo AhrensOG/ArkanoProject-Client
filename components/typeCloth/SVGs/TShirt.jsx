@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "../../../context/hooks";
 
 
-const TShirt = ({id, width, chestColor, leftArmColor, rightArmColor, neckColor}) => {
+const TShirt = ({ id, width }) => {
+  const clothes = useSelector(state => state.clothes);
+
+  let chestColor = clothes.color.Frontal,
+    leftArmColor = clothes.color.Mangas,
+    rightArmColor = clothes.color.Mangas,
+    neckColor = clothes.color.Cuello;
+
+  useEffect(() => {
+    chestColor = clothes.color.Frontal;
+    leftArmColor = clothes.color.Mangas;
+    rightArmColor = clothes.color.Mangas;
+    neckColor = clothes.color.Cuello;
+  }, [clothes]);
+
   return (
     <svg
       id={id}
@@ -22,7 +37,7 @@ const TShirt = ({id, width, chestColor, leftArmColor, rightArmColor, neckColor})
         d="m105.98 33 13-7.5 14.5-9.5 8-7.5 8-7.5L151 0l2 1 4 3.04 5.5 3.5 6 3 8 3 6.5 1.5 8.5 2 11.5 1.5 9 .5h19.5l7.5-1 4.5-.5 5.5-1 7-1.5 11.5-3.5 7-3.5 5.5-3 4-3 1.5-1.5 1.5-.5 1 .5 1.5 1.5 3.48 3.46 7.5 6.5 15 11 23 13 42 20.5 2 3.5 1 4.5v4l-11.5 28-9.5 29-7 30.5-5.5 33-2.24 32-3 23v20l-.76 14.5-1 14v24l.5 6.5v10l.5 10-.5 15.5.5 12.5 1 13.75 1 13.75 1 9.5 2 18.5 3.5 25 1.5 23 1.5 25 1.5 23.5 1.5 10.5v6.5l2 6-1 4-7 3.25-8.5 1.25-12 1-11.5-1-14.5-1.25h-20.5l-38.5 2.25-18.5 1h-17l-67-3.5-15 1-9 .5-8.5.5-7 .5-8-1-11-1.5-6-2-2-2.5v-3l1-3 1-3v-9l.5-4.5 1-7.5 3.5-55 9-83.5 1-23v-72l-1-21v-19l-2-19-2.5-22.5-2-18-9-49.5-9-30-11.5-28-3-8.5-1-4.5 1-4 3-4.5 48-23.5Z"
         //Chest
         fill={chestColor}
-        fillOpacity={0.7}
+        fillOpacity={0.6}
       />
       <path
         d="m105.98 33 13-7.5 14.5-9.5 8-7.5 8-7.5L151 0l2 1 4 3.04 5.5 3.5 6 3 8 3 6.5 1.5 8.5 2 11.5 1.5 9 .5h19.5l7.5-1 4.5-.5 5.5-1 7-1.5 11.5-3.5 7-3.5 5.5-3 4-3 1.5-1.5 1.5-.5 1 .5 1.5 1.5 3.48 3.46 7.5 6.5 15 11 23 13 42 20.5 2 3.5 1 4.5v4l-11.5 28-9.5 29-7 30.5-5.5 33-2.24 32-3 23v20l-.76 14.5-1 14v24l.5 6.5v10l.5 10-.5 15.5.5 12.5 1 13.75 1 13.75 1 9.5 2 18.5 3.5 25 1.5 23 1.5 25 1.5 23.5 1.5 10.5v6.5l2 6-1 4-7 3.25-8.5 1.25-12 1-11.5-1-14.5-1.25h-20.5l-38.5 2.25-18.5 1h-17l-67-3.5-15 1-9 .5-8.5.5-7 .5-8-1-11-1.5-6-2-2-2.5v-3l1-3 1-3v-9l.5-4.5 1-7.5 3.5-55 9-83.5 1-23v-72l-1-21v-19l-2-19-2.5-22.5-2-18-9-49.5-9-30-11.5-28-3-8.5-1-4.5 1-4 3-4.5 48-23.5Z"
@@ -47,7 +62,7 @@ const TShirt = ({id, width, chestColor, leftArmColor, rightArmColor, neckColor})
           d="m51.602 60.5 5.398-3-1 3-1.5 3.5.5 5 4 9.5 4 9.5 2.5 6.5 3 8.5 3.5 9.5 2 7.5 3.5 11.5 3 14L86 173l1.5 14.5L90 207l1.5 12.5-1.5 3-2.5 5.5-1.5 6-2.5 5.5-4.5 10h-5l-25.5-4-20-6-17.5-8-4.5-2-4-2.5-1.5-3.5 2.5-5.5 2-5.5V209l2-2 2-8.5 4-12L17 174l4-14.5 2-15.5 3-23 4.5-26.5 4-11.5 4-8 6-8.5 7.102-6Z"
           //left arm
           fill={leftArmColor}
-          fillOpacity={0.7}
+          fillOpacity={0.6}
         />
       </g>
       <g style={{ mixBlendMode: "multiply" }}>
@@ -59,7 +74,7 @@ const TShirt = ({id, width, chestColor, leftArmColor, rightArmColor, neckColor})
           d="m371.5 97 8-20 4-10-1-5-1-5 9.5 6.5 11 14 4 11 3 13.5 3 18.5 2.5 20 1.5 12 2 11 4.5 15.5 6 19.5 2.5 7.5 1.5 3 1 3.5 1 4 1.5 4 1 3-1.5 3.5-3 2-3.5 2-4.5 2.5-4.5 2-9 3.5-8.5 2.5-8.5 2.5-9.5 2.5-11 2-6 .5-4.5.5-3.5-.5-1.5-2-1.5-4.5-2.5-5-1.5-3.5-1-4-3-6.5-2-4 1-4 1-12.5 1.5-16 2.5-17.5L357 146l6-23.5 8.5-25.5Z"
           // right arm
           fill={rightArmColor}
-          fillOpacity={0.7}
+          fillOpacity={0.6}
         />
       </g>
       <path

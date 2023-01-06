@@ -5,20 +5,31 @@ import SideBar from "../components/Navbar/SideBar";
 import { Carousel } from "flowbite-react";
 import TShirtCard from "../components/typeCloth/cards/TShirtCard";
 import DirectionButtonsControllers from "../components/buttons/DirectionButtonsControllers";
+import { useDispatch, useSelector } from "../context/hooks";
+import { updateClassClothes } from "../context/Actions/clothes";
 
 
 export default function TypeClothes() {
   const [nav, setNav] = useState(false);
 
+  const clothes = useSelector(state => state.clothes);
+
+  const dispatch = useDispatch();
+
   const updateTypeOfClothes = () => {
-    let y = null;
-    const x = document.getElementsByClassName('theCarousel')[0].childNodes[0].childNodes[0].childNodes.forEach(e => {
-      if (e.attributes[1].value === 'true') {
-        y = e.childNodes[0].childNodes[0].id;
+    const childrenOfTheCrousel = document.getElementsByClassName('theCarousel')[0].childNodes[0].childNodes[0].childNodes;
+    childrenOfTheCrousel.forEach(child => {
+      const childIsActive = child.attributes[1].value;
+      if (childIsActive === 'true') {
+        const clothesClass = child.childNodes[0].childNodes[0].id;
+        dispatch(updateClassClothes(clothesClass));
       };
     });
-    console.log(y);
   };
+
+  // useEffect(() => {
+  //   console.log(clothes);
+  // });
 
   return (
     <>
@@ -35,9 +46,9 @@ export default function TypeClothes() {
         </div>
         <div className="basis-[90%] theCarousel">
           <Carousel indicators={false} slide={false}>
-            <TShirtCard id="REMERA 1" width={250} />
-            <TShirtCard id="REMERA 2" width={250} />
-            <TShirtCard id="REMERA 3" width={250} />
+            <TShirtCard id="Remera" width={250} />
+            <TShirtCard id="Buzo" width={250} />
+            <TShirtCard id="Campera" width={250} />
           </Carousel>          
         </div>
         <div className="basis-[5%]">

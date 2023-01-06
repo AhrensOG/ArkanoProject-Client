@@ -1,13 +1,14 @@
 import Head from 'next/head'
-import Link from 'next/link';
 import { useState } from 'react';
 import InitialButtons from '../components/buttons/InitialsButtons';
 import LandingPage from '../components/LandingPage/LandingPage'
 import NavBar from '../components/Navbar/NavBar';
 import SideBar from '../components/Navbar/SideBar';
 
+
 export default function Home() {
-  const [nav, setNav] = useState(false)
+  const [nav, setNav] = useState(false);
+
   return (
     <>
       <Head>
@@ -20,9 +21,7 @@ export default function Home() {
         <NavBar nav={nav} setNav={setNav} state={"welcome"}/>
         <SideBar nav={nav} setNav={setNav}/>
         <LandingPage/>
-        <Link href={'/typeOfClothes'}>
-          <InitialButtons initial={true}/>
-        </Link>
+        <InitialButtons initial={true}/>
       </div>
     </>
   );
