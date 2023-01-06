@@ -1,5 +1,5 @@
 import types from './types';
-import initialState from './initialState';
+import initialState, { addtionalClothesColorZone } from './initialState';
 
 
 const reducer = (state = initialState, action) => {
@@ -9,11 +9,26 @@ const reducer = (state = initialState, action) => {
         case types.CLOTHES_CLASS_UPDATE: {
             return {
                 ...state,
+                clothes: { 
+                    ...state.clothes,
+                    class: payload.classClothes,
+                    color: {
+                        ...payload.oldStateBasicZones,
+                        ...addtionalClothesColorZone[payload.classClothes],
+                    }
+                },
             };
         };
         case types.CLOTHES_PROP_UPDATE: {
             return {
                 ...state,
+                clothes: { 
+                    ...state.clothes,
+                    [payload.category]: {
+                        ...state.clothes[payload.category],
+                        ...payload.propAndValueEdited,
+                    },
+                },
             };
         };
         case types.CLOTHES_POST: {

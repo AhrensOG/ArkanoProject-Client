@@ -18,4 +18,23 @@ const state = {
     },
 };
 
+export const remeraColorZones = Object.keys(state.clothes.color);
+
+export const addtionalClothesColorZone = {
+    Remera: {},
+    Buzo: {
+        Capucha: '',
+        Bolsillo: '',
+    },
+    Campera: {
+        Capucha: '',
+        Bolsillos: '',
+    },
+};
+
+state.clothes.color = {
+    ...state.clothes.color,
+    ...addtionalClothesColorZone[state.clothes.class],
+};
+
 export default state;
