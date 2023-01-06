@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "../../../context/hooks";
+import { updatePropClothes } from "../../../context/Actions/clothes";
 import SelectBar from "../SelectBar/SelectBar";
 
 
@@ -15,23 +17,48 @@ const ColorSelect = () => {
     `#000000`,
   ];
 
-  const zonas = ["Mangas", "Cuello", "Atrás", "Frente" ]
+  const dispatch = useDispatch();
+
+  const clothes = useSelector(state => state.clothes);
+
+  const [zonas, setZonas] = useState(Object.keys(clothes.color));
+  const [zona, setZona] = useState(zonas[0]);
+
+  useEffect(() => {
+    setZonas(Object.keys(clothes.color));
+    // console.log(clothes);
+  }, [clothes]);
+
+  const handleSelectColor = (e) => {
+    e.preventDefault();
+    dispatch(updatePropClothes('color', { [zona]: e.target.id }));
+  };
+
+  const handleSelect = (e) => {
+    e.preventDefault();
+    setZona(e.target.id);
+  };
 
   return (
     <>
-      <div className="flex bg-[#313131] w-full h-12 gap-1 py-2 justify-around">
-        {colors.map((e) => {
+      <div className="flex bg-[#313131] w-full h-12 gap-1 py-2 justify-around items-center">
+        {colors?.map((e) => {
           return (
-            <div key={e} className="">
-              <button
-                style={{ backgroundColor: e }}
-                className="rounded-full p-3"
-              ></button>
-            </div>
+            <button
+              id={e}
+              key={e}
+              onClick={(e) => handleSelectColor(e)}
+              style={{ backgroundColor: e }}
+              className="rounded-full p-3 h-5 w-5"
+            ></button>
           );
         })}
       </div>
-      <SelectBar array={zonas} handleSelect={() => 1} />
+      <SelectBar 
+        array={zonas} 
+        handleSelect={handleSelect} 
+        state={zona}
+      />
     </>
   );
 };
