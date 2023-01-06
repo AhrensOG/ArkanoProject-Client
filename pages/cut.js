@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import NavBar from "../components/Navbar/NavBar";
 import DirectionButtonsControllers from "../components/buttons/DirectionButtonsControllers";
 import SideBar from "../components/Navbar/SideBar";
 import { Carousel } from "flowbite-react";
 import TShirtCard from "../components/typeCloth/cards/TShirtCard";
+import { useSelector } from "../context/hooks";
 
 
 export default function Corte() {
   const [nav, setNav] = useState(false);
+
+  const clothes = useSelector(state => state.clothes);
+
+  // useEffect(() => {
+  //   console.log(clothes);
+  // });
+
   return (
     <>
       <Head>
