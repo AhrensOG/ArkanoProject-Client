@@ -1,6 +1,6 @@
 // import AXIOS from 'axios';
 import types from '../Reducer/types';
-import { remeraColorZones } from '../Reducer/initialState';
+import { addtionalClothesColorZone, remeraColorZones } from '../Reducer/initialState';
 
 
 export const updateClassClothes = (classClothes) => {
@@ -8,9 +8,13 @@ export const updateClassClothes = (classClothes) => {
         try {
             const oldStateBasicZones = {};
             remeraColorZones.forEach(zone => oldStateBasicZones[zone] = state.clothes.color[zone]);
+            const colorZones = {
+                ...oldStateBasicZones,
+                ...addtionalClothesColorZone[classClothes],
+            };
             return dispatch({
                 type: types.CLOTHES_CLASS_UPDATE,
-                payload: { classClothes, oldStateBasicZones },
+                payload: { classClothes, colorZones },
             });
         } catch(error) {
             return console.error(error.message);
