@@ -1,36 +1,50 @@
-import React, { useState } from "react";
-import ColorSelect from './ColorSelect'
+import React, { useEffect, useState } from "react";
+import ColorSelect from './colorBar/ColorSelect';
+import FontSelect from './fontBar/FontSelect';
+import ImageSelect from './imageBar/ImageSelect';
 import SlideUp from "../transitions/SlideUp";
 
+
 const ControlsDesign = () => {
-  const [colorTool, setColorTool] = useState(false)
-  const [textTool, setTextTool] = useState(false)
-  const [logoTool, setLogoTool] = useState(false)
+  const [colorTool, setColorTool] = useState(false);
+  const [textTool, setTextTool] = useState(false);
+  const [logoTool, setLogoTool] = useState(false);
+
+  useEffect(() => {
+    setColorTool(true);
+  }, []);
 
   const handleSelectColor = (e) => {
     if (e.target.value === 'color') {
-      setColorTool(true)
-      setTextTool(false)
-      setLogoTool(false)
-    }
+      setColorTool(true);
+      setTextTool(false);
+      setLogoTool(false);
+    };
     if (e.target.value === 'text') {
-      setColorTool(false)
-      setTextTool(true)
-      setLogoTool(false)
-    }
+      setColorTool(false);
+      setTextTool(true);
+      setLogoTool(false);
+    };
     if (e.target.value === 'logo') {
-      setColorTool(false)
-      setTextTool(false)
-      setLogoTool(true)
-    }
+      setColorTool(false);
+      setTextTool(false);
+      setLogoTool(true);
+    };
   };
+
   return (
     <div>
       <div>
         {
           colorTool 
-          ? <SlideUp><ColorSelect/></SlideUp>
-          : <div></div>
+          ? <SlideUp>
+            <ColorSelect/>
+          </SlideUp>
+          : textTool 
+            ? <SlideUp><FontSelect/></SlideUp>
+            : logoTool 
+              ? <SlideUp><ImageSelect/></SlideUp>
+              : <div></div>
         }
       </div>
       <div className="flex justify-center  w-full">
