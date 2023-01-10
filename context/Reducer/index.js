@@ -1,43 +1,33 @@
 import types from './types';
-import initialState, { addtionalClothesColorZone } from './initialState';
+import initialState from './initialState';
 
 
 const reducer = (state = initialState, action) => {
     const { type, payload } = action;
 
     switch (type) {
-        case types.CLOTHES_CLASS_UPDATE: {
-            return {
-                ...state,
-                clothes: { 
-                    ...state.clothes,
-                    class: payload.classClothes,
-                    color: {
-                        ...payload.oldStateBasicZones,
-                        ...addtionalClothesColorZone[payload.classClothes],
-                    }
-                },
-            };
-        };
+        // Clothes
+        case types.CLOTHES_CLASS_UPDATE: 
         case types.CLOTHES_PROP_UPDATE: {
             return {
                 ...state,
-                clothes: { 
-                    ...state.clothes,
-                    [payload.category]: {
-                        ...state.clothes[payload.category],
-                        ...payload.propAndValueEdited,
-                    },
-                },
+                currentNode: { ...payload.currentNode, },
+                clothes: { ...payload.clothes, },
             };
         };
         case types.CLOTHES_POST: {
-            return {
+            return { ...state, };
+        };
+        // CurrentNode
+        case types.CURRENT_NODE_UPDATE: {
+            return { 
                 ...state,
+                currentNode: { ...payload, },
+                clothes: { ...payload.data, },
             };
         };
         default: {
-            return { ...state };
+            return { ...state, };
         };
     };
 };

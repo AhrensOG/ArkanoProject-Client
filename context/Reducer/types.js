@@ -3,6 +3,8 @@ const types = {
     CLOTHES_CLASS_UPDATE: "CLOTHES_CLASS_UPDATE",
     CLOTHES_PROP_UPDATE: "CLOTHES_PROP_UPDATE",
     CLOTHES_POST: "CLOTHES_POST",
+    // CurrentNode
+    CURRENT_NODE_UPDATE: "CURRENT_NODE_UPDATE",
 };
 
 export default types;

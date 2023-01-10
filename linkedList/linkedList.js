@@ -36,6 +36,7 @@ LinkedList.prototype.insert = function(data, pos /* Seguno argumento optativo. P
             pointer.next = newNode;
         };
 	};
+	return newNode;
 };
 
 LinkedList.prototype.findByPosition = function(pos /* Argumento optativo. Por defecto devuelve el nodo final */) {
@@ -50,7 +51,6 @@ LinkedList.prototype.findByPosition = function(pos /* Argumento optativo. Por de
         pos = pos < 1 ? 1 : pos;
 		while (pointer.next?.position <= pos) pointer = pointer.next;
 	} else return null;
-
 	return pointer;
 };
 

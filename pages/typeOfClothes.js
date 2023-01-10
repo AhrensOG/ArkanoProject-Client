@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import NavBar from "../components/Navbar/NavBar";
 import SideBar from "../components/Navbar/SideBar";
@@ -21,8 +21,8 @@ export default function TypeClothes() {
     childrenOfTheCrousel.forEach(child => {
       const childIsActive = child.attributes[1].value;
       if (childIsActive === 'true') {
-        const clothesClass = child.childNodes[0].childNodes[0].id;
-        dispatch(updateClassClothes(clothesClass));
+        const classClothes = child.childNodes[0].childNodes[0].id;
+        dispatch(updateClassClothes({ classClothes }));
       };
     });
   };
