@@ -1,6 +1,7 @@
 // import AXIOS from 'axios';
 import types from '../Reducer/types';
 import { addtionalClothesColorZone, remeraColorZones } from '../Reducer/initialState';
+import { updateLinkedList } from './AuxiliaryFunctions/linkedList';
 
 
 export const updateClassClothes = (classClothes) => {
@@ -12,9 +13,18 @@ export const updateClassClothes = (classClothes) => {
                 ...oldStateBasicZones,
                 ...addtionalClothesColorZone[classClothes],
             };
+            const newClothes = {
+                ...state.clothes,
+                class: classClothes,
+                color: { ...colorZones, },
+            };
+            const { currentNode } = updateLinkedList({ clothes: newClothes, state });
             return dispatch({
                 type: types.CLOTHES_CLASS_UPDATE,
-                payload: { classClothes, colorZones },
+                payload: { 
+                    clothes: newClothes,
+                    currentNode,
+                },
             });
         } catch(error) {
             return console.error(error.message);
@@ -23,11 +33,22 @@ export const updateClassClothes = (classClothes) => {
 };
 
 export const updatePropClothes = (category, propAndValueEdited) => {
-    return async (dispatch) => {
+    return async (dispatch, state) => {
         try {
+            const newClothes = {
+                ...state.clothes,
+                [category]: {
+                    ...state.clothes[category],
+                    ...propAndValueEdited,
+                },
+            };
+            const { currentNode } = updateLinkedList({ clothes: newClothes, state });
             return dispatch({
                 type: types.CLOTHES_PROP_UPDATE,
-                payload: { category, propAndValueEdited },
+                payload: { 
+                    clothes: newClothes,
+                    currentNode,
+                },
             });
         } catch(error) {
             return console.error(error.message);
@@ -35,10 +56,11 @@ export const updatePropClothes = (category, propAndValueEdited) => {
     };
 };
 
-export const postClothes = (clothes) => {
+export const postClothes = () => {
     // const URL = process.env.REACT_APP_ONLINE_SERVER || `http://localhost:3001`;
-    return async (dispatch) => {
+    return async (dispatch, state) => {
         try {
+            const clothes = state.clothes;
             // const JSON = await AXIOS.post(`${URL}/clothes`, clothes);
             // const response = JSON.data;
             return dispatch({
