@@ -4,7 +4,7 @@ import { addtionalClothesColorZone, remeraColorZones } from '../Reducer/initialS
 import { updateLinkedList } from './AuxiliaryFunctions/linkedList';
 
 
-export const updateClassClothes = (classClothes) => {
+export const updateClassClothes = ({ classClothes }) => {
     return async (dispatch, state) => {
         try {
             const oldStateBasicZones = {};
@@ -32,7 +32,7 @@ export const updateClassClothes = (classClothes) => {
     };
 };
 
-export const updatePropClothes = (category, propAndValueEdited) => {
+export const updatePropClothes = ({ category, propAndValueEdited }) => {
     return async (dispatch, state) => {
         try {
             const newClothes = {
