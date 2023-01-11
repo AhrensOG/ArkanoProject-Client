@@ -1,18 +1,13 @@
 // import AXIOS from 'axios';
 import types from '../Reducer/types';
-import { addtionalClothesColorZone, remeraColorZones } from '../Reducer/initialState';
 import { updateLinkedList } from './AuxiliaryFunctions/linkedList';
+import { refreshWhenClassClothesChange } from './AuxiliaryFunctions/clothes';
 
 
 export const updateClassClothes = ({ classClothes }) => {
     return async (dispatch, state) => {
         try {
-            const oldStateBasicZones = {};
-            remeraColorZones.forEach(zone => oldStateBasicZones[zone] = state.clothes.color[zone]);
-            const colorZones = {
-                ...oldStateBasicZones,
-                ...addtionalClothesColorZone[classClothes],
-            };
+            const colorZones = refreshWhenClassClothesChange({ classClothes, state });
             const newClothes = {
                 ...state.clothes,
                 class: classClothes,
