@@ -15,6 +15,19 @@ export default function Modification() {
 
   const clothes = useSelector(state => state.clothes);
 
+  let chestColor = clothes.color.Frontal,
+    leftArmColor = clothes.color.Mangas,
+    rightArmColor = clothes.color.Mangas,
+    neckColor = clothes.color.Cuello;
+
+  useEffect(() => {
+    chestColor = clothes.color.Frontal;
+    leftArmColor = clothes.color.Mangas;
+    rightArmColor = clothes.color.Mangas;
+    neckColor = clothes.color.Cuello;
+  }, [clothes]);
+
+
   const handleBack = () => {
     router.back();
   };
@@ -40,7 +53,15 @@ export default function Modification() {
           <ControlBar handleBack={handleBack} handleSave={handleSave}/>
         </div>
         <div className="basis-[90%]">
-          <TShirtCard id={clothes.class} width={250} clothes={clothes} />
+          <TShirtCard 
+            id={clothes.class} 
+            width={250} 
+            clothes={clothes} 
+            chestColor={chestColor} 
+            leftArmColor={leftArmColor} 
+            rightArmColor={rightArmColor} 
+            neckColor={neckColor} 
+          />
         </div>
         <div className="basis-[5%]">
           <ControlsDesign/>

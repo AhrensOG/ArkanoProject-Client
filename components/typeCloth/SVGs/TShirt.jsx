@@ -1,22 +1,7 @@
-import React, { useEffect } from "react";
-import { useSelector } from "../../../context/hooks";
+import React from "react";
 
 
-const TShirt = ({ id, width }) => {
-  const clothes = useSelector(state => state.clothes);
-
-  let chestColor = clothes.color.Frontal,
-    leftArmColor = clothes.color.Mangas,
-    rightArmColor = clothes.color.Mangas,
-    neckColor = clothes.color.Cuello;
-
-  useEffect(() => {
-    chestColor = clothes.color.Frontal;
-    leftArmColor = clothes.color.Mangas;
-    rightArmColor = clothes.color.Mangas;
-    neckColor = clothes.color.Cuello;
-  }, [clothes]);
-
+const TShirt = ({ id, width, chestColor, leftArmColor, rightArmColor, neckColor }) => {
   return (
     <svg
       id={id}
