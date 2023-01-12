@@ -7,12 +7,7 @@ import { refreshWhenClassClothesChange } from './AuxiliaryFunctions/clothes';
 export const updateClassClothes = ({ classClothes }) => {
     return async (dispatch, state) => {
         try {
-            const colorZones = refreshWhenClassClothesChange({ classClothes, state });
-            const newClothes = {
-                ...state.clothes,
-                class: classClothes,
-                color: { ...colorZones, },
-            };
+            const newClothes = refreshWhenClassClothesChange({ classClothes, state });
             const { currentNode } = updateLinkedList({ clothes: newClothes, state });
             return dispatch({
                 type: types.CLOTHES_CLASS_UPDATE,

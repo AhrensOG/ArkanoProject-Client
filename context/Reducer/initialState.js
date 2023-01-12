@@ -70,18 +70,4 @@ const state = {
     clothes,
 };
 
-// parte dinámica obsoleta
-export const remeraColorZones = Object.keys(state.clothes.color);
-export const addtionalClothesColorZone = {
-    Remera: {},
-    Buzo: {
-        Capucha: '',
-        Bolsillo: '',
-    },
-    Campera: {
-        Capucha: '',
-        Bolsillos: '',
-    },
-};
-
 export default state;
