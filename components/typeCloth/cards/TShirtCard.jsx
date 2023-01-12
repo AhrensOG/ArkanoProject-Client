@@ -1,18 +1,15 @@
-import react from 'react';
+import React from 'react';
 import Card from '../cardTemplate/CardTemplate';
 import TShirt from '../SVGs/TShirt';
 
 
-const TShirtCard = ({ id, width, chestColor, leftArmColor, rightArmColor, neckColor }) => {
+const TShirtCard = ({ id, width, clothes }) => {
   return (
     <Card 
       SVG={TShirt} 
       id={id} 
       width={width} 
-      chestColor={chestColor} 
-      leftArmColor={leftArmColor} 
-      rightArmColor={rightArmColor} 
-      neckColor={neckColor} 
+      clothes={clothes}
     />
   );
 };

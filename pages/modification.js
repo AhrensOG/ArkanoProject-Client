@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import NavBar from "../components/Navbar/NavBar";
@@ -14,19 +14,6 @@ export default function Modification() {
   const router = useRouter();
 
   const clothes = useSelector(state => state.clothes);
-
-  let chestColor = clothes.color.Frontal,
-    leftArmColor = clothes.color.Mangas,
-    rightArmColor = clothes.color.Mangas,
-    neckColor = clothes.color.Cuello;
-
-  useEffect(() => {
-    chestColor = clothes.color.Frontal;
-    leftArmColor = clothes.color.Mangas;
-    rightArmColor = clothes.color.Mangas;
-    neckColor = clothes.color.Cuello;
-  }, [clothes]);
-
 
   const handleBack = () => {
     router.back();
@@ -57,10 +44,6 @@ export default function Modification() {
             id={clothes.class} 
             width={250} 
             clothes={clothes} 
-            chestColor={chestColor} 
-            leftArmColor={leftArmColor} 
-            rightArmColor={rightArmColor} 
-            neckColor={neckColor} 
           />
         </div>
         <div className="basis-[5%]">
