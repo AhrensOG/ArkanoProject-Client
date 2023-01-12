@@ -1,37 +1,76 @@
 import LinkedList from '../../linkedList/linkedList';
 
 
-// Estructura de datos de la prenda
+// Construcción de la parte dinámica del estado clothes
+export const clothesPropsByClass = {
+    Remera: {
+        color: {
+            Frontal: /* Input --> */ '' /**/,
+            Mangas: /* Input --> */ '' /**/,
+            Cuello: /* Input --> */ '' /**/,
+        },
+    },
+    Buzo: {
+        color: {
+            Frontal: /* Input --> */ '' /**/,
+            Mangas: /* Input --> */ '' /**/,
+            Cuello: /* Input --> */ '' /**/,
+            Capucha: /* Input --> */ '' /**/,
+            'Bolsillo canguro': /* Input --> */ '' /**/,
+        },
+    },
+    Campera: {
+        color: {
+            Frontal: /* Input --> */ '' /**/,
+            Mangas: /* Input --> */ '' /**/,
+            Cuello: /* Input --> */ '' /**/,
+            Capucha: /* Input --> */ '' /**/,
+            Bolsillos: /* Input --> */ '' /**/,
+        },
+    },
+};
+
+// Construcción de la estructura de datos del estado clothes (dinámica + estática)
+const classes = Object.keys(clothesPropsByClass).reduce((obj, classClothes) => {
+    return { 
+        ...obj,
+        [classClothes]: classClothes,
+    };
+}, {});
+
+// console.log({ classes, file: './context/Reducer/initialState.js' });
+
+const classClothes = classes./* Input --> */Remera/* Remera, Buzo o Campera */;
+
 const clothes = {
-    class: 'Remera',
+    class: classClothes, // default value: 'Remera'
     color: {
-        Frontal: '',
-        Posterior: '',
-        Mangas: '',
-        Cuello: '',
+        ...clothesPropsByClass[classClothes].color,
     },
     text: [{
-        zona: 'frontal', // frontal o posterior
-        HTML: '<p>Nueva REMERA</p>',
+        zona: /* Input --> */ 'frontal' /* 'frontal' o 'posterior' */,
+        HTML: /* Input --> */ '<p>Nueva REMERA</p>' /**/,
     }],
     image: [{
-        zona: 'posterior', // frontal, posterior, mangaDerecha o mangaIzquierda
-        url: 'http://URL.com',
+        zona: /* Input --> */ 'posterior' /* 'frontal', 'posterior', 'mangaDerecha' o 'mangaIzquierda' */,
+        url: /* Input --> */ 'http://URL.com' /**/,
     }],
 };
+
+// console.log({ clothes, file: './context/Reducer/initialState.js' });
 
 // Inicialización de la LinkedList
 const list = new LinkedList();
 list.insert(clothes);
 
-// Preinicialización del estado inicial
+// Inicialización del estado inicial
 const state = {
     linkedList: list,
     currentNode: list.point,
     clothes,
 };
 
-// Armado de la parte dinámica del estado
+// parte dinámica obsoleta
 export const remeraColorZones = Object.keys(state.clothes.color);
 export const addtionalClothesColorZone = {
     Remera: {},
@@ -44,12 +83,5 @@ export const addtionalClothesColorZone = {
         Bolsillos: '',
     },
 };
-
-// Inicialización del estado inicial actualizando la preinicialización con la parte dinámica
-state.clothes.color = {
-    ...state.clothes.color,
-    ...addtionalClothesColorZone[state.clothes.class],
-};
-state.linkedList.insert(state.clothes, 1);
 
 export default state;
