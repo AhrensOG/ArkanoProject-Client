@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import NavBar from "../components/Navbar/NavBar";
@@ -40,7 +40,11 @@ export default function Modification() {
           <ControlBar handleBack={handleBack} handleSave={handleSave}/>
         </div>
         <div className="basis-[90%]">
-          <TShirtCard id={clothes.class} width={250} clothes={clothes} />
+          <TShirtCard 
+            id={clothes.class} 
+            width={250} 
+            clothes={clothes} 
+          />
         </div>
         <div className="basis-[5%]">
           <ControlsDesign/>
