@@ -22,13 +22,13 @@ export const updateClassClothes = ({ classClothes }) => {
     };
 };
 
-export const updatePropClothes = ({ category, propAndValueEdited }) => {
+export const updatePropClothes = ({ classClothes, propAndValueEdited }) => {
     return async (dispatch, state) => {
         try {
             const newClothes = {
                 ...state.clothes,
-                [category]: {
-                    ...state.clothes[category],
+                [classClothes]: {
+                    ...state.clothes[classClothes],
                     ...propAndValueEdited,
                 },
             };
