@@ -10,7 +10,7 @@ function Node(data) {
 	this.position = null;
 };
 
-LinkedList.prototype.insert = function(data, pos /* Seguno argumento optativo. Por defecto agrega al final */) {
+LinkedList.prototype.insert = function({ data, pos /* Opcional: Por defecto agrega al final */ }) {
 	if (pos !== undefined && pos !== null && !Number.isInteger(pos)) throw new Error({ 
 		message: 'The position seted is not a integer number', 
 	});
@@ -39,7 +39,7 @@ LinkedList.prototype.insert = function(data, pos /* Seguno argumento optativo. P
 	return newNode;
 };
 
-LinkedList.prototype.findByPosition = function(pos /* Argumento optativo. Por defecto devuelve el nodo final */) {
+LinkedList.prototype.findByPosition = function({ pos /* Opcional: Por defecto devuelve el nodo final */ }) {
 	if (pos !== undefined && pos !== null && !Number.isInteger(pos)) throw new Error({ 
 		message: 'The sitting position is not a integer number', 
 	});
@@ -60,9 +60,9 @@ export default LinkedList;
 // Test de la LinkedList
 
 /* const LIST = new LinkedList();
-LIST.insert('A');
-LIST.insert('B');
-LIST.insert('C', 4);
-LIST.insert('D', 4);
+LIST.insert({ data: 'A' });
+LIST.insert({ data: 'B' });
+LIST.insert({ data: 'C', pos: 4 });
+LIST.insert({ data: 'D', pos: 4 });
 
-console.log(LIST.findByPosition()); */
+console.log(LIST.findByPosition({  })); */

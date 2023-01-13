@@ -61,7 +61,7 @@ const clothes = {
 
 // Inicialización de la LinkedList
 const list = new LinkedList();
-list.insert(clothes);
+list.insert({ data: clothes });
 
 // Inicialización del estado inicial
 const state = {
