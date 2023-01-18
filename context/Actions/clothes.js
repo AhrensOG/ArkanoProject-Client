@@ -1,6 +1,6 @@
 // import AXIOS from 'axios';
 import types from '../Reducer/types';
-import { updateLinkedList } from './AuxiliaryFunctions/linkedList';
+import { initializateLinkedList, updateLinkedList } from './AuxiliaryFunctions/linkedList';
 import { refreshWhenClassClothesChange } from './AuxiliaryFunctions/clothes';
 
 
@@ -8,6 +8,7 @@ export const updateClassClothes = ({ classClothes }) => {
     return async (dispatch, state) => {
         try {
             const newClothes = refreshWhenClassClothesChange({ classClothes, state });
+            initializateLinkedList({ clothes: newClothes, state });
             const { currentNode } = updateLinkedList({ clothes: newClothes, state });
             return dispatch({
                 type: types.CLOTHES_CLASS_UPDATE,
