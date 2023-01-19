@@ -8,6 +8,7 @@ const reducer = (state = initialState, action) => {
     switch (type) {
         // Clothes
         case types.CLOTHES_CLASS_UPDATE: 
+        case types.CLOTHES_CUT_UPDATE: 
         case types.CLOTHES_PROP_UPDATE: {
             return {
                 ...state,

@@ -26,7 +26,7 @@ const ColorSelect = () => {
 
   useEffect(() => {
     setZonas(Object.keys(clothes.color));
-  }, [clothes.class]);
+  }, [clothes.class, clothes.cut]);
 
   useEffect(() => {
     setZona(zonas[0]);
