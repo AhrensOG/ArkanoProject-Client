@@ -34,9 +34,10 @@ const ColorSelect = () => {
 
   const handleSelectColor = (e) => {
     e.preventDefault();
-    const classClothes = 'color';
-    const propAndValueEdited = { [zona]: e.target.id };
-    dispatch(updatePropClothes({ classClothes, propAndValueEdited }));
+    dispatch(updatePropClothes({ 
+      typeOfProp: 'color',
+      propAndValueEdited: { [zona]: e.target.id },
+    }));
   };
 
   const handleSelect = (e) => {
