@@ -1,106 +1,49 @@
 import LinkedList from '../../linkedList/linkedList';
+import clothesPropsByClassAndCut from './SVGScrapping';
 
 
-// Construcción de la parte dinámica del estado clothes
-export const clothesPropsByClassAndCut = {
-    Remera: {
-        'Cut 1': {
-            color: {
-                Frontal: /* Input --> */ '' /**/,
-                Mangas: /* Input --> */ '' /**/,
-                Cuello: /* Input --> */ '' /**/,
-            },
-        },
-        'Cut 2': {
-            color: {
-                Frontal: /* Input --> */ '' /**/,
-                Mangas: /* Input --> */ '' /**/,
-                Cuello: /* Input --> */ '' /**/,
-                'parte extra rem': /* Input --> */ '' /**/,
-            },
-        },
-    },
-    Buzo: {
-        'Cut 1': {
-            color: {
-                Frontal: /* Input --> */ '' /**/,
-                Mangas: /* Input --> */ '' /**/,
-                Cuello: /* Input --> */ '' /**/,
-                Capucha: /* Input --> */ '' /**/,
-                'Bolsillo canguro': /* Input --> */ '' /**/,
-            },
-        },
-        'Cut 2': {
-            color: {
-                Frontal: /* Input --> */ '' /**/,
-                Mangas: /* Input --> */ '' /**/,
-                Cuello: /* Input --> */ '' /**/,
-                Capucha: /* Input --> */ '' /**/,
-                'Bolsillo canguro': /* Input --> */ '' /**/,
-                'parte extra buz': /* Input --> */ '' /**/,
-            },
-        },
-    },
-    Campera: {
-        'Cut 1': {
-            color: {
-                Frontal: /* Input --> */ '' /**/,
-                Mangas: /* Input --> */ '' /**/,
-                Cuello: /* Input --> */ '' /**/,
-                Capucha: /* Input --> */ '' /**/,
-                Bolsillos: /* Input --> */ '' /**/,
-            },
-        },
-        'Cut 2': {
-            color: {
-                Frontal: /* Input --> */ '' /**/,
-                Mangas: /* Input --> */ '' /**/,
-                Cuello: /* Input --> */ '' /**/,
-                Capucha: /* Input --> */ '' /**/,
-                Bolsillos: /* Input --> */ '' /**/,
-                'parte extra cam': /* Input --> */ '' /**/,
-            },
-        },
-    },
-};
-
-// Obtención y elección de clase y corte
+/* 
+Obtención y elección de clase y corte 
+*/
 const classes = Object.keys(clothesPropsByClassAndCut);
-
-// console.log({ classes, file: './context/Reducer/initialState.js' });
-
 const classClothes = classes[/* Input --> */0/* Remera, Buzo o Campera */ % classes.length];
 
 const cuts = Object.keys(clothesPropsByClassAndCut[classClothes]);
-
-// console.log({ cuts, file: './context/Reducer/initialState.js' });
-
 const cutClothes = cuts[/* Input --> */0/* Remera, Buzo o Campera */ % cuts.length];
 
-// Construcción de la estructura de datos del estado clothes (dinámica + estática)
+/* 
+Construcción de la estructura de datos del estado clothes (dinámica + estática) 
+*/
 const clothes = {
     class: classClothes, // default value: 'Remera'
     cut: cutClothes, // default value: 'Cut 1'
     color: {
-        ...clothesPropsByClassAndCut[classClothes][cutClothes].color,
+        ...clothesPropsByClassAndCut[classClothes][cutClothes].frontal.color,
+        ...clothesPropsByClassAndCut[classClothes][cutClothes].dorsal.color,
     },
     text: [{
-        zona: /* Input --> */ 'frontal' /* 'frontal' o 'posterior' */,
-        HTML: /* Input --> */ '<p>Nueva REMERA</p>' /**/,
+        zone: /* Input --> */ 'frontal' /* 'frontal' o 'dorsal' */,
+        text: /* Input --> */ 'Nueva REMERA' /**/,
+        typography: /* Input --> */ 'arial' /**/,
+        size: /* Input --> */ 20 /**/,
     }],
     image: [{
-        zona: /* Input --> */ 'posterior' /* 'frontal', 'posterior', 'mangaDerecha' o 'mangaIzquierda' */,
-        url: /* Input --> */ 'http://URL.com' /**/,
+        zone: /* Input --> */ 'dorsal' /* 'frontal', 'dorsal' */,
+        source: /* Input --> */ 'http://URL.com' /* URL o Base-64 */,
     }],
 };
 
-// console.log({ clothes, file: './context/Reducer/initialState.js' });
+// console.log({ clothes, classes, cuts, file: './context/Reducer/initialState.js' });
 
-// Inicialización de la LinkedList
+/* 
+Inicialización de la LinkedList 
+*/
 const list = new LinkedList();
 list.insert({ data: clothes });
 
-// Inicialización del estado inicial
+/* 
+Inicialización del estado inicial 
+*/
 const state = {
     linkedList: list,
     currentNode: list.point,
