@@ -16,7 +16,7 @@ $('svg').each((i, e) => {
     const zonesObj = {};
     $(e).find('.colors').each((i, e) => $(e)[0].children.forEach(e => {
         const zone = $(e)[0].attribs.class;
-        zonesObj[zone] = 'white';
+        zonesObj[zone] = '#FFFFFF';
     }));
     const classClothes = e.attribs.id;
     const cutClothes = $(e).find('.cutClothes')[0].attribs.id;
