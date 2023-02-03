@@ -8,6 +8,8 @@ configure({ adapter: new Adapter() });
 
 
 const Bank = ({ 
+    width = '80vw' /* Opcional: tamaño de los SVGs */,
+    height = null /* Opcional: tamaño de los SVGs */, 
     classClothes /* Opcional: filtra por clase */, 
     cutClothes /* Opcional: filtra por corte */, 
     viewClothes /* Opcional: filtra por vista */, 
@@ -17,7 +19,7 @@ const Bank = ({
     const svgNamesArray = Object.keys(SVGs)
     const svgJSXArray = svgNamesArray
         .map(svgName => SVGs[svgName].default)
-        .map((E, i) => <E key={svgNamesArray[i]} />)
+        .map((E, i) => <E key={svgNamesArray[i]} width={width} height={height} />)
         .filter(e => {
             const wrapper = shallow(e)
             const testClass = classClothes ? (wrapper.find({ id: classClothes }).length) : true;
@@ -34,14 +36,14 @@ const Bank = ({
             {svgJSXArray}
         </Carousel>
         : bankRef
-        ? <div ref={bankRef}>
+        ? <div ref={bankRef} className=' h-full w-full flex flex-col justify-center items-center'>
             {svgJSXArray}
         </div>
         : Carousel
         ? <Carousel slide={false}>
             {svgJSXArray}
         </Carousel>
-        : <div>{
+        : <div className=' h-full w-full flex flex-col justify-center items-center'>{
             svgJSXArray
         }</div>
     );
