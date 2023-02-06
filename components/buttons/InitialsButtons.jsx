@@ -7,7 +7,7 @@ const InitialButtons = ({ initial }) => {
   const router = useRouter();
 
   const init = () => {
-    router.push("/typeOfClothes");
+    router.push("/class");
   };
   const next = () => {
     router.push("/cut");
