@@ -6,7 +6,7 @@ const custom = {
     resetStateWhenChangeClassClothes: false/* Input: true or false */,
 
     // Guardar la información en las props al cambiar clothes.class
-    saveValues: true/* Input: true or false */,
+    saveValues: false/* Input: true or false */,
 
 };
 

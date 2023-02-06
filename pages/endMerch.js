@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head'
 import EndingPage from '../components/EndingPage/EndingPage';
 import NavBar from '../components/Navbar/NavBar';
@@ -9,11 +9,12 @@ import { useSelector } from '../context/hooks';
 export default function EndMerch() {
     const [nav, setNav] = useState(false)
 
+    const state = useSelector(state => state);
     const clothes = useSelector(state => state.clothes);
 
     // useEffect(() => {
-    //     console.log(clothes);
-    // });
+    //   console.log({ state, file: './pages/class' });
+    // }, [state]);
 
 return (
     <>

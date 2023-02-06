@@ -1,17 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import BackButton from './buttons/BackButton.jsx';
 import UndoButton from './buttons/UndoButton.jsx';
 import RemakeButton from './buttons/RemakeButton.jsx';
-import { useSelector } from '../../context/hooks.js';
 
 
 const ControlBar = ({handleBack, handleUndo, handleRemake, handleSave}) => {
-    const state = useSelector(state => state);
-
-    useEffect(() => {
-        console.log({ state, file: 'ControlBar' });
-    }, [state]);
-
     return (
         <div className='flex justify-center items-center bg-black'>
             <div className='basis-[10%] flex flex-row justify-end items-center w-full h-full'>

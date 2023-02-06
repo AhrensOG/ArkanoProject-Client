@@ -1,4 +1,4 @@
-import { clothesPropsByClassAndCut } from '../../Reducer/initialState';
+import clothesPropsByClassAndCut from '../../Reducer/SVGScrapping';
 import custom from '../Customize';
 
 
@@ -12,11 +12,16 @@ export const refreshWhenClassCutClothesChange = ({ classClothes /* Opcional */, 
     const classUsed = classClothes ? classClothes : state.clothes.class;
     const cuts = Object.keys(clothesPropsByClassAndCut[classUsed]);
     const cutUsed = cutClothes ? cutClothes : cuts[0];
-    const zonesValueObject = {};
-    const zonesArray = Object.keys(clothesPropsByClassAndCut[classUsed][cutUsed].color);
+    const propsFrontalOrDorsal = clothesPropsByClassAndCut[classUsed][cutUsed];
+    const zonesValueObject = {
+        ...propsFrontalOrDorsal.frontal.color,
+        ...propsFrontalOrDorsal.dorsal.color,
+    };
+    const zonesArray = Object.keys(zonesValueObject);
     zonesArray.forEach(zone => {
-        let savedValue = saveValues ? (state.clothes.color)[zone] : '';
-        zonesValueObject[zone] = savedValue;
+        saveValues 
+            && (state.clothes.color)[zone] 
+            && (zonesValueObject[zone] = (state.clothes.color)[zone]);
     });
     const newClothes = {
         ...state.clothes,

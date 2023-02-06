@@ -41,13 +41,13 @@ export const updateCutClothes = ({ cutClothes }) => {
     };
 };
 
-export const updatePropClothes = ({ classClothes, propAndValueEdited }) => {
+export const updatePropClothes = ({ typeOfProp, propAndValueEdited }) => {
     return async (dispatch, state) => {
         try {
             const newClothes = {
                 ...state.clothes,
-                [classClothes]: {
-                    ...state.clothes[classClothes],
+                [typeOfProp]: {
+                    ...state.clothes[typeOfProp],
                     ...propAndValueEdited,
                 },
             };
