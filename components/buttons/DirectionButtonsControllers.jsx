@@ -14,7 +14,7 @@ const DirectionButtonsControllers = ({ goHome, callback }) => {
 
     const data = router.asPath;
 
-    data === "/typeOfClothes"
+    data === "/class"
     ? router.push('/cut')
     : data === "/cut"
     ? router.push("/modification")

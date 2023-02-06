@@ -1,23 +1,14 @@
 // import AXIOS from 'axios';
 import types from '../Reducer/types';
-import { addtionalClothesColorZone, remeraColorZones } from '../Reducer/initialState';
-import { updateLinkedList } from './AuxiliaryFunctions/linkedList';
+import { initializateLinkedList, updateLinkedList } from './AuxiliaryFunctions/linkedList';
+import { refreshWhenClassCutClothesChange } from './AuxiliaryFunctions/clothes';
 
 
 export const updateClassClothes = ({ classClothes }) => {
     return async (dispatch, state) => {
         try {
-            const oldStateBasicZones = {};
-            remeraColorZones.forEach(zone => oldStateBasicZones[zone] = state.clothes.color[zone]);
-            const colorZones = {
-                ...oldStateBasicZones,
-                ...addtionalClothesColorZone[classClothes],
-            };
-            const newClothes = {
-                ...state.clothes,
-                class: classClothes,
-                color: { ...colorZones, },
-            };
+            const newClothes = refreshWhenClassCutClothesChange({ classClothes, state });
+            initializateLinkedList({ clothes: newClothes, state });
             const { currentNode } = updateLinkedList({ clothes: newClothes, state });
             return dispatch({
                 type: types.CLOTHES_CLASS_UPDATE,
@@ -32,13 +23,31 @@ export const updateClassClothes = ({ classClothes }) => {
     };
 };
 
-export const updatePropClothes = ({ category, propAndValueEdited }) => {
+export const updateCutClothes = ({ cutClothes }) => {
+    return async (dispatch, state) => {
+        try {
+            const newClothes = refreshWhenClassCutClothesChange({ cutClothes, state });
+            const { currentNode } = updateLinkedList({ clothes: newClothes, state });
+            return dispatch({
+                type: types.CLOTHES_CUT_UPDATE,
+                payload: { 
+                    clothes: newClothes,
+                    currentNode,
+                },
+            });
+        } catch(error) {
+            return console.error(error.message);
+        };
+    };
+};
+
+export const updatePropClothes = ({ typeOfProp, propAndValueEdited }) => {
     return async (dispatch, state) => {
         try {
             const newClothes = {
                 ...state.clothes,
-                [category]: {
-                    ...state.clothes[category],
+                [typeOfProp]: {
+                    ...state.clothes[typeOfProp],
                     ...propAndValueEdited,
                 },
             };

@@ -1,55 +1,53 @@
 import LinkedList from '../../linkedList/linkedList';
+import clothesPropsByClassAndCut from './SVGScrapping';
 
 
-// Estructura de datos de la prenda
+/* 
+Obtención y elección de clase y corte 
+*/
+const classes = Object.keys(clothesPropsByClassAndCut);
+const classClothes = classes[/* Input --> */0/* Remera, Buzo o Campera */ % classes.length];
+
+const cuts = Object.keys(clothesPropsByClassAndCut[classClothes]);
+const cutClothes = cuts[/* Input --> */0/* Remera, Buzo o Campera */ % cuts.length];
+
+/* 
+Construcción de la estructura de datos del estado clothes (dinámica + estática) 
+*/
 const clothes = {
-    class: 'Remera',
+    class: classClothes, // default value: 'Remera'
+    cut: cutClothes, // default value: 'Cut 1'
     color: {
-        Frontal: '',
-        Posterior: '',
-        Mangas: '',
-        Cuello: '',
+        ...clothesPropsByClassAndCut[classClothes][cutClothes].frontal.color,
+        ...clothesPropsByClassAndCut[classClothes][cutClothes].dorsal.color,
     },
     text: [{
-        zona: 'frontal', // frontal o posterior
-        HTML: '<p>Nueva REMERA</p>',
+        zone: /* Input --> */ 'frontal' /* 'frontal' o 'dorsal' */,
+        text: /* Input --> */ 'Nueva REMERA' /**/,
+        typography: /* Input --> */ 'arial' /**/,
+        size: /* Input --> */ 20 /**/,
     }],
     image: [{
-        zona: 'posterior', // frontal, posterior, mangaDerecha o mangaIzquierda
-        url: 'http://URL.com',
+        zone: /* Input --> */ 'dorsal' /* 'frontal', 'dorsal' */,
+        source: /* Input --> */ 'http://URL.com' /* URL o Base-64 */,
     }],
 };
 
-// Inicialización de la LinkedList
-const list = new LinkedList();
-list.insert(clothes);
+// console.log({ clothes, classes, cuts, file: './context/Reducer/initialState.js' });
 
-// Preinicialización del estado inicial
+/* 
+Inicialización de la LinkedList 
+*/
+const list = new LinkedList();
+list.insert({ data: clothes });
+
+/* 
+Inicialización del estado inicial 
+*/
 const state = {
     linkedList: list,
     currentNode: list.point,
     clothes,
 };
-
-// Armado de la parte dinámica del estado
-export const remeraColorZones = Object.keys(state.clothes.color);
-export const addtionalClothesColorZone = {
-    Remera: {},
-    Buzo: {
-        Capucha: '',
-        Bolsillo: '',
-    },
-    Campera: {
-        Capucha: '',
-        Bolsillos: '',
-    },
-};
-
-// Inicialización del estado inicial actualizando la preinicialización con la parte dinámica
-state.clothes.color = {
-    ...state.clothes.color,
-    ...addtionalClothesColorZone[state.clothes.class],
-};
-state.linkedList.insert(state.clothes, 1);
 
 export default state;

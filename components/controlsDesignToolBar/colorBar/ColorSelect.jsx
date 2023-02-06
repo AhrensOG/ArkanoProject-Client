@@ -26,14 +26,18 @@ const ColorSelect = () => {
 
   useEffect(() => {
     setZonas(Object.keys(clothes.color));
-    // console.log({ clothes });
-  }, [clothes]);
+  }, [clothes.class, clothes.cut]);
+
+  useEffect(() => {
+    setZona(zonas[0]);
+  }, [zonas]);
 
   const handleSelectColor = (e) => {
     e.preventDefault();
-    const category = 'color';
-    const propAndValueEdited = { [zona]: e.target.id };
-    dispatch(updatePropClothes({ category, propAndValueEdited }));
+    dispatch(updatePropClothes({ 
+      typeOfProp: 'color',
+      propAndValueEdited: { [zona]: e.target.id },
+    }));
   };
 
   const handleSelect = (e) => {

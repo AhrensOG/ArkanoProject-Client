@@ -3,9 +3,10 @@ import ColorSelect from './colorBar/ColorSelect';
 import FontSelect from './fontBar/FontSelect';
 import ImageSelect from './imageBar/ImageSelect';
 import SlideUp from "../transitions/SlideUp";
+import ReverseButton from "../cardButtons/ReverseButton";
 
 
-const ControlsDesign = () => {
+const ControlsDesign = ({ viewClothes, setViewClothes }) => {
   const [colorTool, setColorTool] = useState(false);
   const [textTool, setTextTool] = useState(false);
   const [logoTool, setLogoTool] = useState(false);
@@ -33,7 +34,8 @@ const ControlsDesign = () => {
   };
 
   return (
-    <div>
+    <div className=' relative'>
+      <ReverseButton viewClothes={viewClothes} setViewClothes={setViewClothes}/>
       <div>
         {
           colorTool 
