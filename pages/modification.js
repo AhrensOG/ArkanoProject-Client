@@ -13,9 +13,10 @@ export default function Modification() {
   const [nav, setNav] = useState(false);
   const [viewClothes, setViewClothes] = useState('frontal');
 
-  const router = useRouter();
-
+  const state = useSelector(state => state);
   const clothes = useSelector(state => state.clothes);
+
+  const router = useRouter();
 
   const handleBack = () => {
     router.back();
@@ -24,6 +25,10 @@ export default function Modification() {
   const handleSave = () => {
     router.push('/endMerch');
   };
+
+  // useEffect(() => {
+  //   console.log({ state, file: './pages/modification' });
+  // }, [state]);
 
   return (
     <>

@@ -11,6 +11,7 @@ import Bank from "../components/svgBank/SvgBank";
 export default function ClassClothes() {
   const [nav, setNav] = useState(false);
 
+  const state = useSelector(state => state);
   const clothes = useSelector(state => state.clothes);
 
   const dispatch = useDispatch();
@@ -32,8 +33,8 @@ export default function ClassClothes() {
   };
 
   // useEffect(() => {
-  //   console.log(clothes);
-  // });
+  //   console.log({ state, file: './pages/class' });
+  // }, [state]);
 
   return (
     <>

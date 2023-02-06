@@ -9,7 +9,6 @@ const { saveValues } = custom;
 // };
 
 export const refreshWhenClassCutClothesChange = ({ classClothes /* Opcional */, cutClothes /* Opcional */, state }) => {
-    console.log({clothesPropsByClassAndCut})
     const classUsed = classClothes ? classClothes : state.clothes.class;
     const cuts = Object.keys(clothesPropsByClassAndCut[classUsed]);
     const cutUsed = cutClothes ? cutClothes : cuts[0];
