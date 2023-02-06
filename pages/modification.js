@@ -11,12 +11,11 @@ import Card from '../components/svgCard/Card';
 
 export default function Modification() {
   const [nav, setNav] = useState(false);
+  const [viewClothes, setViewClothes] = useState('frontal');
 
   const router = useRouter();
 
   const clothes = useSelector(state => state.clothes);
-
-  const viewClothes = 'frontal';
 
   const handleBack = () => {
     router.back();
@@ -46,7 +45,7 @@ export default function Modification() {
           <Card clothes={clothes} viewClothes={viewClothes}/>
         </div>
         <div className="basis-[5%]">
-          <ControlsDesign/>
+          <ControlsDesign viewClothes={viewClothes} setViewClothes={setViewClothes}/>
         </div>
       </div>
     </>
