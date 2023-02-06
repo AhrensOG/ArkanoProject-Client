@@ -2,7 +2,7 @@ import React from "react";
 import { configure, shallow } from "enzyme";
 import Adapter from '@cfaester/enzyme-adapter-react-18';
 import { Carousel } from "flowbite-react";
-import * as SVGs from './index';
+import * as SVGs from '../../public/SVGClothes';
 
 
 configure({ adapter: new Adapter() });

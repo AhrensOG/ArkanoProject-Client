@@ -2,7 +2,7 @@ import React from "react";
 import { configure, shallow } from "enzyme";
 import Adapter from '@cfaester/enzyme-adapter-react-18';
 import cheerio from 'cheerio';
-import Bank from "../../../public/SVGClothes/SvgBank";
+import Bank from "../../../components/svgBank/SvgBank";
 
 
 configure({ adapter: new Adapter() });
