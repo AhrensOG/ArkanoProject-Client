@@ -1,6 +1,7 @@
 import React from "react";
 import { configure, shallow } from "enzyme";
 import Adapter from '@cfaester/enzyme-adapter-react-18';
+import { Carousel } from "flowbite-react";
 import * as SVGs from './index';
 
 
@@ -13,7 +14,7 @@ const Bank = ({
     classClothes /* Opcional: filtra por clase */, 
     cutClothes /* Opcional: filtra por corte */, 
     viewClothes /* Opcional: filtra por vista */, 
-    Carousel /* Opcional: para envolver el array en carousel u otro padre */, 
+    inCarousel /* Opcional: para envolver el array en carousel u otro padre */, 
     bankRef /* Opcional: al pasar una Referencia, agrega un div con dicha ref. De lo contrario, deja un array de svg's */ 
 }) => {
     const svgNamesArray = Object.keys(SVGs)
@@ -31,21 +32,13 @@ const Bank = ({
     // console.log({ file: './public/SVGClothes/SvgBank.js', svgJSXArray });
 
     return (
-        bankRef && Carousel
-        ? <Carousel ref={bankRef} slide={false}>
-            {svgJSXArray}
-        </Carousel>
-        : bankRef
-        ? <div ref={bankRef} className=' h-full w-full flex flex-col justify-center items-center'>
-            {svgJSXArray}
-        </div>
-        : Carousel
+        inCarousel
         ? <Carousel slide={false}>
             {svgJSXArray}
         </Carousel>
-        : <div className=' h-full w-full flex flex-col justify-center items-center'>{
-            svgJSXArray
-        }</div>
+        : <div ref={bankRef} className=' h-full w-full flex flex-col justify-center items-center'>
+            {svgJSXArray}
+        </div>
     );
 }; 
 
