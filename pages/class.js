@@ -26,7 +26,6 @@ export default function ClassClothes() {
       .querySelector('[data-active="true"]')
       .getElementsByClassName('classClothes')[0].id;
     dispatch(updateClassClothes({ classClothes }));
-    console.log(classClothes);
   };
 
   // useEffect(() => {
