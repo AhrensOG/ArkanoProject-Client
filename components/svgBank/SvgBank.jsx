@@ -25,6 +25,8 @@ const Bank = ({
                 <Element 
                     key={`${svgNamesArray[i]}-svg`}
                     className={`classClothes max-w-[${maxWidth}] max-h-[${maxHeight}]`}
+                    width={null}
+                    height={null}
                 />
             ),
             key: svgNamesArray[i],
