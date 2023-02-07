@@ -10,33 +10,59 @@ configure({ adapter: new Adapter() });
 
 const Bank = ({ 
     width = '80vw' /* Opcional: tamaño de los SVGs */,
-    height = null /* Opcional: tamaño de los SVGs */, 
+    height = null /* Opcional alterno a 'width': tamaño de los SVGs */, 
     classClothes /* Opcional: filtra por clase */, 
     cutClothes /* Opcional: filtra por corte */, 
     viewClothes /* Opcional: filtra por vista */, 
-    inCarousel /* Opcional: para envolver el array en carousel u otro padre */, 
-    bankRef /* Opcional: al pasar una Referencia, agrega un div con dicha ref. De lo contrario, deja un array de svg's */ 
+    inCarousel /* requerimiento: para envolver el array en carousel */, 
+    bankRef /* requerimiento alterno a 'inCarousel': asigna un div padre con la referencia */,
 }) => {
+    const useWidth = width != '80vw' || !height ? width : null,
+        useHeight = width != '80vw' || !height ? null : height;
+
     const svgNamesArray = Object.keys(SVGs)
     const svgJSXArray = svgNamesArray
         .map(svgName => SVGs[svgName].default)
-        .map((E, i) => <E key={svgNamesArray[i]} width={width} height={height} />)
-        .filter(e => {
-            const wrapper = shallow(e)
+        .map((Element, i) => ({
+            tagReact: (
+                <Element 
+                    width={useWidth} 
+                    height={useHeight}
+                />
+            ),
+            key: svgNamesArray[i],
+        }))
+        .filter(({ tagReact }) => {
+            const wrapper = shallow(tagReact)
             const testClass = classClothes ? (wrapper.find({ id: classClothes }).length) : true;
             const testCut = cutClothes ? (wrapper.find({ id: cutClothes }).length) : true;
             const testView = viewClothes ? (wrapper.find({ id: viewClothes }).length) : true;
             return testClass && testCut && testView;
-        });
+        })
+        .map(({ tagReact, key }) => (
+            inCarousel
+            ? <div key={key} >
+                <div className=' h-full w-full flex flex-col justify-center items-center'>
+                    {tagReact}
+                </div>
+            </div>
+            : tagReact
+        ));
 
-    // console.log({ file: './public/SVGClothes/SvgBank.js', svgJSXArray });
+    // console.log({ 
+    //     file: './public/SVGClothes/SvgBank.js',
+    //     svgJSXArray: svgJSXArray.map(e => shallow(e).render()),
+    // });
 
     return (
         inCarousel
         ? <Carousel slide={false}>
             {svgJSXArray}
         </Carousel>
-        : <div ref={bankRef} className=' h-full w-full flex flex-col justify-center items-center'>
+        : <div 
+            ref={bankRef} 
+            className=' h-full w-full flex flex-col justify-center items-center'
+        >
             {svgJSXArray}
         </div>
     );
