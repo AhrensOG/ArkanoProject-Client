@@ -26,7 +26,6 @@ export default function CutClothes() {
       .querySelector('[data-active="true"]')
       .getElementsByClassName('cutClothes')[0].id;
     dispatch(updateCutClothes({ cutClothes }));
-    console.log(cutClothes);
   };
 
   // useEffect(() => {
