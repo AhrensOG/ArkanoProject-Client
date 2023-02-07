@@ -22,14 +22,11 @@ export default function CutClothes() {
   const CAROUSEL_CUT_CONTAINER_REF = useRef();
 
   const handleUpdateCutClothes = () => {
-    const childrenOfTheCrousel = CAROUSEL_CUT_CONTAINER_REF.current.childNodes[0].childNodes[0].childNodes;
-    childrenOfTheCrousel.forEach(child => {
-      const childIsActive = child.attributes[1].value;
-      if (childIsActive === 'true') {
-        const cutClothes = child.childNodes[0].childNodes[1].id;
-        dispatch(updateCutClothes({ cutClothes }));
-      };
-    });
+    const cutClothes = CAROUSEL_CUT_CONTAINER_REF.current
+      .querySelector('[data-active="true"]')
+      .getElementsByClassName('cutClothes')[0].id;
+    dispatch(updateCutClothes({ cutClothes }));
+    console.log(cutClothes);
   };
 
   // useEffect(() => {

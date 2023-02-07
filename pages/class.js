@@ -22,14 +22,11 @@ export default function ClassClothes() {
   const CAROUSEL_CLASS_CONTAINER_REF = useRef();
 
   const handleUpdateClassClothes = () => {
-    const childrenOfTheCrousel = CAROUSEL_CLASS_CONTAINER_REF.current.childNodes[0].childNodes[0].childNodes;
-    childrenOfTheCrousel.forEach(child => {
-      const childIsActive = child.attributes[1].value;
-      if (childIsActive === 'true') {
-        const classClothes = child.childNodes[0].id;
-        dispatch(updateClassClothes({ classClothes }));
-      };
-    });
+    const classClothes = CAROUSEL_CLASS_CONTAINER_REF.current
+      .querySelector('[data-active="true"]')
+      .getElementsByClassName('classClothes')[0].id;
+    dispatch(updateClassClothes({ classClothes }));
+    console.log(classClothes);
   };
 
   // useEffect(() => {
