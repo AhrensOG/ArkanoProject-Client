@@ -9,25 +9,22 @@ configure({ adapter: new Adapter() });
 
 
 const Bank = ({ 
-    width = '80vw' /* Opcional: tamaño de los SVGs */,
-    height = null /* Opcional alterno a 'width': tamaño de los SVGs */, 
+    maxWidth = '80vw' /* Opcional: tamaño de los SVGs */,
+    maxHeight = '80vh' /* Opcional alterno a 'width': tamaño de los SVGs */, 
     classClothes /* Opcional: filtra por clase */, 
     cutClothes /* Opcional: filtra por corte */, 
     viewClothes /* Opcional: filtra por vista */, 
     inCarousel /* requerimiento: para envolver el array en carousel */, 
     bankRef /* requerimiento alterno a 'inCarousel': asigna un div padre con la referencia */,
 }) => {
-    const useWidth = width != '80vw' || !height ? width : null,
-        useHeight = width != '80vw' || !height ? null : height;
-
     const svgNamesArray = Object.keys(SVGs)
     const svgJSXArray = svgNamesArray
         .map(svgName => SVGs[svgName].default)
         .map((Element, i) => ({
             tagReact: (
                 <Element 
-                    width={useWidth} 
-                    height={useHeight}
+                    key={`${svgNamesArray[i]}-svg`}
+                    className={`classClothes max-w-[${maxWidth}] max-h-[${maxHeight}]`}
                 />
             ),
             key: svgNamesArray[i],
