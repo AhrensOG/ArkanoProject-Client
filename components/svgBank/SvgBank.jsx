@@ -27,7 +27,7 @@ const Bank = ({
                     className={`classClothes max-w-[${maxWidth}] max-h-[${maxHeight}]`} // Tailwind no está tomando las clases max-w-[] y max-h-[] en producción, por lo que se agrego el atributo 'style'.
                     width={null}
                     height={null}
-                    style={{'max-width': maxWidth, 'max-height': maxHeight}}
+                    style={{maxWidth: maxWidth, maxHeight: maxHeight}}
                 />
             ),
             key: svgNamesArray[i],
